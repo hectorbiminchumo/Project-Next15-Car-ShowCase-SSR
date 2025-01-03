@@ -44,11 +44,23 @@ const SearchManufacturer = ({ manufacturer, setManufacturer}: SearchManufacturer
               filteredManufacturers.map((item) => (
                 <ComboboxOption
                   key={item}
-                  className={({active}) => `relative search-manufacturer__option ${active? 'bg-primary-blue text-white': 'text-gray-900'}
+                  className={({focus}) => `relative search-manufacturer__option ${focus? 'bg-primary-blue text-white': 'text-gray-900'}
                   `}
                   value={item}
                 >
-                  {item}
+                  {({ selected, focus }) => (
+                      <>
+                        <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
+                          {item}
+                        </span>
+
+                        {/* Show an active blue background color if the option is selected */}
+                        {selected ? (
+                          <span className={`absolute inset-y-0 left-0 flex items-center pl-3 ${focus? "text-white": "text-pribg-primary-purple"}`}
+                          ></span>
+                        ) : null}
+                      </>
+                    )}
                 </ComboboxOption>
               ))
             )
