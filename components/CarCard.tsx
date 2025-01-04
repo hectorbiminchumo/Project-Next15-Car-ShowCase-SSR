@@ -11,7 +11,6 @@ interface CarCardProps {
 }
 
 const CarCard = ({ car }: CarCardProps) => {
-    console.log('aqui=>>>',car)
     const { city_mpg, year, make, model, transmission, drive} = car;
     const [isOpen, setIsOpen] = useState(false)
     const carRent = calculateCarRent(city_mpg, year)
@@ -33,7 +32,7 @@ const CarCard = ({ car }: CarCardProps) => {
             </span>
         </p>
         <div className='relative w-full h-40 my-3 object-contain'>
-            <Image src='/hero.png'   alt='car model' fill priority className='object-contain' />
+            <Image src='/hero.png'   alt='car model' sizes='auto'fill priority className='object-contain' />
         </div>
         <div className='relative flex w-full mt-2'>
             <div className='flex group-hover:invisible w-full justify-between text-gray'>
@@ -49,7 +48,7 @@ const CarCard = ({ car }: CarCardProps) => {
                         {drive.toUpperCase()}
                     </p>
                 </div>
-                <div className='flex flex-col justify-center items-center gap-2'>
+                <div className='flex flex-col justify-center items-center gap-2 '>
                     <Image src='/gas.svg' width={20} height={20} alt='steering wheel' />
                     <p className='text-[14px]'>
                         {city_mpg} MPG
